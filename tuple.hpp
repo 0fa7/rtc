@@ -8,6 +8,10 @@ public:
 
     Tuple& operator+=(const Tuple& b);
     Tuple& operator-=(const Tuple& b);
+    Tuple& operator*=(float b);
+    Tuple& operator/=(float b);
+
+    float VecMag() const;
 
     float m_x;
     float m_y;
@@ -21,3 +25,10 @@ Tuple Vector(float x, float y, float z);
 Tuple operator+(const Tuple& a, const Tuple& b);
 Tuple operator-(const Tuple& a);
 Tuple operator-(const Tuple& a, const Tuple& b);
+Tuple operator*(float a, const Tuple& b);
+Tuple operator/(const Tuple& a, float b);
+
+float VecMag(const Tuple& a);
+Tuple Normalize(const Tuple& a);
+float Dot(const Tuple& a, const Tuple& b);
+Tuple Cross(const Tuple& a, const Tuple& b);
