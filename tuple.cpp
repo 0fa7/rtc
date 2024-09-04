@@ -74,6 +74,19 @@ Tuple Vector(float x, float y, float z)
     return Tuple(x, y, z, 0.f);
 }
 
+Tuple Color(float x, float y, float z)
+{
+    return Tuple(x, y, z, 0.f);
+}
+
+bool operator==(const Tuple& a, const Tuple& b)
+{
+    return (a.m_x == b.m_x) &&
+        (a.m_y == b.m_y) &&
+        (a.m_z == b.m_z) &&
+        (a.m_w == b.m_w);
+}
+
 Tuple operator+(const Tuple& a, const Tuple& b)
 {
     return Tuple(a.m_x + b.m_x,
@@ -108,6 +121,14 @@ Tuple operator*(float a, const Tuple& b)
         a * b.m_y,
         a * b.m_z,
         a * b.m_w);
+}
+
+Tuple operator*(const Tuple& a, const Tuple& b)
+{
+    return Tuple(a.m_x * b.m_x,
+        a.m_y * b.m_y,
+        a.m_z * b.m_z,
+        a.m_w * b.m_w);
 }
 
 Tuple operator/(const Tuple& a, float b)

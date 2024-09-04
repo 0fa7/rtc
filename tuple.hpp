@@ -21,11 +21,15 @@ public:
 
 Tuple Point(float x, float y, float z);
 Tuple Vector(float x, float y, float z);
+Tuple Color(float x, float y, float z);
+
+bool operator==(const Tuple& a, const Tuple& b);
 
 Tuple operator+(const Tuple& a, const Tuple& b);
 Tuple operator-(const Tuple& a);
 Tuple operator-(const Tuple& a, const Tuple& b);
 Tuple operator*(float a, const Tuple& b);
+Tuple operator*(const Tuple& a, const Tuple& b);
 Tuple operator/(const Tuple& a, float b);
 
 float VecMag(const Tuple& a);

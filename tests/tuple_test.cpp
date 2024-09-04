@@ -277,6 +277,20 @@ TEST(TupleTest, Vector)
     EXPECT_FLOAT_EQ(expW, sut.m_w);
 }
 
+TEST(TupleTest, Color)
+{
+    const float expX = -.5f;
+    const float expY = .4f;
+    const float expZ = 1.7f;
+    const float expW = 0.f;
+    const Tuple sut = Color(expX, expY, expZ);
+    
+    EXPECT_FLOAT_EQ(expX, sut.m_x);
+    EXPECT_FLOAT_EQ(expY, sut.m_y);
+    EXPECT_FLOAT_EQ(expZ, sut.m_z);
+    EXPECT_FLOAT_EQ(expW, sut.m_w);
+}
+
 TEST(TupleTest, OperatorAddition)
 {
     // point + vector
@@ -338,6 +352,23 @@ TEST(TupleTest, OperatorAddition)
         const float expW = 0.f;
         const Tuple a1 = Vector(3.f, -2.f, 5.f);
         const Tuple a2 = Vector(-2.f, 3.f, 1.f);
+
+        const Tuple sut = a1 + a2;
+        
+        EXPECT_FLOAT_EQ(expX, sut.m_x);
+        EXPECT_FLOAT_EQ(expY, sut.m_y);
+        EXPECT_FLOAT_EQ(expZ, sut.m_z);
+        EXPECT_FLOAT_EQ(expW, sut.m_w);
+    }
+
+    // color + color
+    {
+        const float expX = 1.6f;
+        const float expY = .7f;
+        const float expZ = 1.f;
+        const float expW = 0.f;
+        const Tuple a1 = Color(.9f, .6f, .75f);
+        const Tuple a2 = Color(.7f, .1f, .25f);
 
         const Tuple sut = a1 + a2;
         
@@ -416,6 +447,23 @@ TEST(TupleTest, OperatorSubtraction)
         EXPECT_FLOAT_EQ(expZ, sut.m_z);
         EXPECT_FLOAT_EQ(expW, sut.m_w);
     }
+
+    // color - color
+    {
+        const float expX = .2f;
+        const float expY = .5f;
+        const float expZ = .5f;
+        const float expW = 0.f;
+        const Tuple a1 = Color(.9f, .6f, .75f);
+        const Tuple a2 = Color(.7f, .1f, .25f);
+
+        const Tuple sut = a1 - a2;
+        
+        EXPECT_FLOAT_EQ(expX, sut.m_x);
+        EXPECT_FLOAT_EQ(expY, sut.m_y);
+        EXPECT_FLOAT_EQ(expZ, sut.m_z);
+        EXPECT_FLOAT_EQ(expW, sut.m_w);
+    }
 }
 
 TEST(TupleTest, OperatorMultiplication)
@@ -443,6 +491,38 @@ TEST(TupleTest, OperatorMultiplication)
         Tuple a1 = Tuple(1.f, -2.f, 3.f, -4.f);
 
         Tuple sut = .5f * a1;
+
+        EXPECT_FLOAT_EQ(expX, sut.m_x);
+        EXPECT_FLOAT_EQ(expY, sut.m_y);
+        EXPECT_FLOAT_EQ(expZ, sut.m_z);
+        EXPECT_FLOAT_EQ(expW, sut.m_w);
+    }
+
+    {
+        const float expX = .4f;
+        const float expY = .6f;
+        const float expZ = .8f;
+        const float expW = 0.f;
+        Tuple a1 = Color(.2f, .3f, .4f);
+
+        Tuple sut = 2.f * a1;
+
+        EXPECT_FLOAT_EQ(expX, sut.m_x);
+        EXPECT_FLOAT_EQ(expY, sut.m_y);
+        EXPECT_FLOAT_EQ(expZ, sut.m_z);
+        EXPECT_FLOAT_EQ(expW, sut.m_w);
+    }
+
+    // color * color
+    {
+        const float expX = .9f;
+        const float expY = .2f;
+        const float expZ = .04f;
+        const float expW = 0.f;
+        Tuple a1 = Color(1.f, .2f, .4f);
+        Tuple a2 = Color(.9f, 1.f, .1f);
+
+        Tuple sut = a1 * a2;
 
         EXPECT_FLOAT_EQ(expX, sut.m_x);
         EXPECT_FLOAT_EQ(expY, sut.m_y);
