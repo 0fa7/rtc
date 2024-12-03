@@ -4,16 +4,19 @@
 
 class Tuple;
 
-class Canvas
-{
+class Canvas {
 public:
-    Canvas(int width, int height);
-    ~Canvas();
+  Canvas(int width, int height);
+  ~Canvas();
 
-    int m_width;
-    int m_height;
+  void WritePixel(const Tuple &color, int r, int c);
+  const Tuple &PixelAt(int r, int c);
+  void FlipY();
 
-    std::vector<std::vector<Tuple>> m_canvas;
+  int m_width;
+  int m_height;
+  std::vector<std::vector<Tuple>> m_canvas;
+
 private:
-    Canvas();
+  Canvas();
 };

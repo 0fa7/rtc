@@ -7,6 +7,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 set(RTC_LIB_SOURCES
     canvas.cpp
+    ppm_writer.cpp
     tuple.cpp)
 
 add_library(rtc_core
