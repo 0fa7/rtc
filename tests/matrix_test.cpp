@@ -89,3 +89,20 @@ TEST(MatrixTest, OperatorEqualsFalse) {
 
   EXPECT_FALSE(sutA == sutB);
 }
+
+TEST(MatrixTest, OperatorMultiply) {
+  std::vector<float> expRow0({20.f, 22.f, 50.f, 48.f});
+  std::vector<float> expRow1({44.f, 54.f, 114.f, 108.f});
+  std::vector<float> expRow2({40.f, 58.f, 110.f, 102.f});
+  std::vector<float> expRow3({16.f, 26.f, 46.f, 42.f});
+
+  Matrix<4> a({{1.f, 2.f,3.f, 4.f}, {5.f, 6.f, 7.f, 8.f}, {9.f, 8.f, 7.f, 6.f}, {5.f, 4.f , 3.f, 2.f}});
+  Matrix<4> b({{-2.f, 1.f, 2.f, 3.f}, {3.f, 2.f, 1.f, -1.f}, {4.f, 3.f, 6.f, 5.f}, {1.f, 2.f, 7.f, 8.f}});
+
+  const auto sut = a * b;
+
+  EXPECT_THAT(sut.m_mat[0], ::testing::ElementsAreArray(expRow0));
+  EXPECT_THAT(sut.m_mat[1], ::testing::ElementsAreArray(expRow1));
+  EXPECT_THAT(sut.m_mat[2], ::testing::ElementsAreArray(expRow2));
+  EXPECT_THAT(sut.m_mat[3], ::testing::ElementsAreArray(expRow3));
+}
